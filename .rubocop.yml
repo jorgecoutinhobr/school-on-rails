@@ -1,0 +1,37 @@
+require:
+  - rubocop-rails
+
+# Mude para a versão de Ruby a ser utilizada e inclua aqui outros arquivos que
+# você considera importante que o RuboCop não execute como: node_modules, etc..
+AllCops:
+  TargetRubyVersion: 3.2.2
+  Exclude:
+    - 'bin/**/*'
+    - 'config.ru'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'script/**/*'
+    - 'spec/rails_helper.rb'
+    - 'vendor/**/*'
+
+# Trabalhamos bastante com testes como a documentação viva do projeto então
+# desabilitamos a Cop de documentação com comentário
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+
+Metrics/LineLength:
+  Max: 120
+
+# Esta é outra Cop polêmica, mas algumas vezes queremos fazer comentários de
+# TODO ou outros tipos usando acentos e caracteres não ascii, por isso, é
+# preciso desabilitar a Cop
+AsciiComments:
+  Enabled: false
