@@ -1,0 +1,30 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.2.2
+  Exclude:
+    - 'bin/**/*'
+    - 'config.ru'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'script/**/*'
+    - 'spec/rails_helper.rb'
+    - 'vendor/**/*'
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+
+Metrics/LineLength:
+  Max: 120
+
+AsciiComments:
+  Enabled: false
