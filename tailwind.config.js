@@ -1,5 +1,16 @@
 module.exports = {
   darkMode: 'media',
+  theme: {
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100ch',
+          }
+        }
+      }
+    },
+  },
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
@@ -8,6 +19,7 @@ module.exports = {
     './node_modules/flowbite/**/*.js'
   ],
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('@tailwindcss/typography')
   ]
 }
