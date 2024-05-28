@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'User created successfully'
       redirect_to users_path
     else
-      flash[:alert] = 'User not created'
+      flash[:alert] = 'Failed to create user'
       render :new, status: :unprocessable_entity
     end
   end
