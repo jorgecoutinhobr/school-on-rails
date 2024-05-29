@@ -1,0 +1,14 @@
+<h1>Login page</h1>
+<%= form_with url: sessions_path do |f| %>
+  <div>
+    <%= f.label :email %><br>
+    <%= f.text_field :email, required: true %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, required: true %>
+  </div>
+  <p>
+    <%= f.submit 'Login' %>
+  </p>
+<% end %>

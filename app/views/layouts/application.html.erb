@@ -13,6 +13,12 @@
   <body class="bg-gray-100 dark:bg-gray-900">
     <%= render "shared/sidebar" %>
     <div class="prose lg:prose-lg mt-2 mx-auto dark:prose-invert" >
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
+      
       <%= yield %>
     </div>
   </body>
