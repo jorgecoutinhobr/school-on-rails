@@ -1,3 +1,6 @@
+/* NEW FILES NEED TO BE PLACED AT THE TOP */
+@import "./components/buttons";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
