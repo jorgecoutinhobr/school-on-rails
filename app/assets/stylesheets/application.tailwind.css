@@ -1,5 +1,7 @@
 /* NEW FILES NEED TO BE PLACED AT THE TOP */
 @import "./components/buttons";
+@import "./components/headings";
+
 
 @tailwind base;
 @tailwind components;
