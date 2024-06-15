@@ -24,7 +24,7 @@
           </div>
             <%= f.submit 'Submit', class: 'btn btn-full btn-blue' %>
             <p class="text-sm text-gray-900 dark:text-gray-400">
-              Already have an account? <a href="#" class="font-medium text-blue-600 hover:underline">Sign in</a>
+              Already have an account? <%= link_to " Sign in", new_session_path, class: 'font-medium text-blue-600 hover:underline'%>
             </p>
         <% end %>
       </div>
