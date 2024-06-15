@@ -10,15 +10,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="bg-gray-100 dark:bg-gray-900">
+  <body class="bg-gray-200 dark:bg-gray-900 dark:text-white">
     <%= render "shared/sidebar" %>
-    <div class="prose lg:prose-lg mt-2 mx-auto dark:prose-invert" >
-      <% flash.each do |type, msg| %>
-        <div>
-          <%= msg %>
-        </div>
-      <% end %>
-      
+    <div class="p-8 sm:ml-64">
+      <%= render "shared/flash_msg" if flash.present? %>
       <%= yield %>
     </div>
   </body>

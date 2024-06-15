@@ -1,0 +1,11 @@
+<% flash.each do |type, msg| %>
+  <% if type == 'alert' %>
+    <div class="text-5xl">
+      <%= render partial: 'shared/notify_alert', locals: { msg: msg } %>
+    </div>
+  <% else %>
+    <div class="text-5xl">
+      <%= render partial: 'shared/notify_notice', locals: { msg: msg } %>
+    </div>
+  <% end %>
+<% end %>
