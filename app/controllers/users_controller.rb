@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_authentication, only: %i[new create]
   before_action :set_user, only: %i[edit update registration]
+  before_action :can_edit_user?, only: %i[edit update registration]
 
   def index
     @users = User.all
@@ -23,12 +24,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    return if can_edit_user?
-
-    flash[:alert] = 'You are not allowed to edit this user'
-    redirect_to users_path
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -41,17 +37,20 @@ class UsersController < ApplicationController
   end
 
   def registration
-    return if can_edit_user?
-
-    flash[:alert] = 'You are not allowed to register this user'
-    redirect_to users_path
+    if @user.address.blank?
+      @address = @user.build_address
+      flash[:notice] = 'Address created successfully' if @address.save
+    else
+      flash[:alert] = 'Error creating address'
+      redirect_to users_path
+    end
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :phone, :cpf,
-                                 :birthdate)
+                                 :birthdate, address_attributes: %i[street city state zip_code country])
   end
 
   def set_user
@@ -59,6 +58,9 @@ class UsersController < ApplicationController
   end
 
   def can_edit_user?
-    current_user.id == @user.id
+    return if current_user.id == @user.id
+
+    redirect_to users_path
+    flash[:alert] = 'You are not allowed to edit this user'
   end
 end
